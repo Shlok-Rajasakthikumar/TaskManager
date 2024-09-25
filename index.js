@@ -5,11 +5,13 @@ const taskRoutes = require('./routes/task');
 const userRoutes = require('./routes/user');
 const limiter = require('./middleware/rateLimit');
 const connectDB = require('./config/db');
+const cors = required('cors');
 
 connectDB();
 
 const app = express();
 app.use(limiter);
+app.use(cors());
 app.use(express.json());
 
 app.use('/api', statusRoutes);
